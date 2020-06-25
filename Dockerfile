@@ -30,7 +30,7 @@ RUN apt-get install -y --no-install-recommends \
 # Otros paquetes necesarios
 RUN apt-get install -y \
         vim \
-        wget \
+        wget
 
 WORKDIR /opt
 RUN wget https://github.com/opencv/opencv_contrib/archive/3.4.0.tar.gz --no-check-certificate && tar -xf 3.4.0.tar.gz && rm 3.4.0.tar.gz
