@@ -27,15 +27,6 @@ RUN apt-get install -y --no-install-recommends \
         libtbb-dev \
         libdc1394-22-dev
 
-
-        python3-pip \
-        libjasper-dev \
-        libc6-dev-i386 \
-        libavresample-dev \
-        libgphoto2-dev \
-        libx32gcc-4.8-dev \
-        libgstreamer-plugins-base1.0-dev \
-
 # Otros paquetes necesarios
 RUN apt-get install -y \
         vim \
