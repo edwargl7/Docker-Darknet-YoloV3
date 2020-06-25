@@ -56,8 +56,9 @@ RUN wget https://github.com/AlexeyAB/darknet/archive/darknet_yolo_v3_optimal.tar
         rm darknet_yolo_v3_optimal.tar.gz && \
         mv ./darknet-darknet_yolo_v3_optimal ./darknet
 WORKDIR /darknet
-COPY Makefile Makefile
-
-RUN make
+RUN mkdir build-release && cd build-release && \
+        cmake .. && \
+        make && \
+        make install
 
 CMD ["/bin/bash"]
