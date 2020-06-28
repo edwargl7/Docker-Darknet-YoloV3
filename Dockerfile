@@ -1,4 +1,4 @@
-FROM nvidia/cuda:10.2-cudnn7-runtime-ubuntu18.04
+FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
 
 RUN apt-get update && apt-get upgrade -y
 
@@ -30,7 +30,7 @@ RUN apt-get install -y --no-install-recommends \
 # Otros paquetes necesarios
 RUN apt-get install -y \
         vim \
-        wget \
+        wget
 
 WORKDIR /opt
 RUN wget https://github.com/opencv/opencv_contrib/archive/3.4.0.tar.gz --no-check-certificate && tar -xf 3.4.0.tar.gz && rm 3.4.0.tar.gz
@@ -56,9 +56,8 @@ RUN wget https://github.com/AlexeyAB/darknet/archive/darknet_yolo_v3_optimal.tar
         rm darknet_yolo_v3_optimal.tar.gz && \
         mv ./darknet-darknet_yolo_v3_optimal ./darknet
 WORKDIR /darknet
-RUN mkdir build-release && cd build-release && \
-        cmake .. && \
-        make && \
-        make install
+
+COPY Makefile Makefile
+RUN make
 
 CMD ["/bin/bash"]
